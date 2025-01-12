@@ -18,10 +18,7 @@ release = 'V1.31.2'
 # ones.
 extensions = [
     "sphinx.ext.autodoc",
-    "breathe",
 ]
-
-breathe_projects = {"EzSnmp": "../../doxygen_docs_build/doxygen/xml"}
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ["_templates"]

@@ -1,0 +1,937 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="./">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="pg8000.native module" href="native.html" /><link rel="prev" title="pg8000.exceptions module" href="exceptions.html" />
+
+    <!-- Generated with Sphinx 8.1.3 and Furo 2024.08.06 -->
+        <title>pg8000.legacy module - pg8000 V1.31.2 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=302659d7" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">pg8000 V1.31.2 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
+  
+  
+  <span class="sidebar-brand-text">pg8000 V1.31.2 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="converters.html">pg8000.converters module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="core.html">pg8000.core module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dbapi.html">pg8000.dbapi module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exceptions.html">pg8000.exceptions module</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">pg8000.legacy module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="native.html">pg8000.native module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="types.html">pg8000.types module</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="_sources/legacy.rst.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="module-pg8000.legacy">
+<span id="pg8000-legacy-module"></span><h1>pg8000.legacy module<a class="headerlink" href="#module-pg8000.legacy" title="Link to this heading">¶</a></h1>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pg8000.legacy.BINARY">
+<span class="sig-prename descclassname"><span class="pre">pg8000.legacy.</span></span><span class="sig-name descname"><span class="pre">BINARY</span></span><a class="headerlink" href="#pg8000.legacy.BINARY" title="Link to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pg8000.legacy.Binary">
+<span class="sig-prename descclassname"><span class="pre">pg8000.legacy.</span></span><span class="sig-name descname"><span class="pre">Binary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pg8000.legacy.Binary" title="Link to this definition">¶</a></dt>
+<dd><p>Construct an object holding binary data.</p>
+<p>This function is part of the <a class="reference external" href="http://www.python.org/dev/peps/pep-0249/">DBAPI 2.0 specification</a>.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pg8000.legacy.Connection">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pg8000.legacy.</span></span><span class="sig-name descname"><span class="pre">Connection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pg8000.legacy.Connection" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="core.html#pg8000.core.CoreConnection" title="pg8000.core.CoreConnection"><code class="xref py py-class docutils literal notranslate"><span class="pre">CoreConnection</span></code></a></p>
+<dl class="py property">
+<dt class="sig sig-object py" id="pg8000.legacy.Connection.DatabaseError">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DatabaseError</span></span><a class="headerlink" href="#pg8000.legacy.Connection.DatabaseError" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pg8000.legacy.Connection.Error">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Error</span></span><a class="headerlink" href="#pg8000.legacy.Connection.Error" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pg8000.legacy.Connection.IntegrityError">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">IntegrityError</span></span><a class="headerlink" href="#pg8000.legacy.Connection.IntegrityError" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pg8000.legacy.Connection.InterfaceError">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">InterfaceError</span></span><a class="headerlink" href="#pg8000.legacy.Connection.InterfaceError" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pg8000.legacy.Connection.InternalError">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">InternalError</span></span><a class="headerlink" href="#pg8000.legacy.Connection.InternalError" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pg8000.legacy.Connection.NotSupportedError">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">NotSupportedError</span></span><a class="headerlink" href="#pg8000.legacy.Connection.NotSupportedError" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pg8000.legacy.Connection.OperationalError">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">OperationalError</span></span><a class="headerlink" href="#pg8000.legacy.Connection.OperationalError" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pg8000.legacy.Connection.ProgrammingError">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ProgrammingError</span></span><a class="headerlink" href="#pg8000.legacy.Connection.ProgrammingError" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pg8000.legacy.Connection.Warning">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Warning</span></span><a class="headerlink" href="#pg8000.legacy.Connection.Warning" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pg8000.legacy.Connection.commit">
+<span class="sig-name descname"><span class="pre">commit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pg8000.legacy.Connection.commit" title="Link to this definition">¶</a></dt>
+<dd><p>Commits the current database transaction.</p>
+<p>This function is part of the <a class="reference external" href="http://www.python.org/dev/peps/pep-0249/">DBAPI 2.0 specification</a>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pg8000.legacy.Connection.cursor">
+<span class="sig-name descname"><span class="pre">cursor</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pg8000.legacy.Connection.cursor" title="Link to this definition">¶</a></dt>
+<dd><p>Creates a <a class="reference internal" href="#pg8000.legacy.Cursor" title="pg8000.legacy.Cursor"><code class="xref py py-class docutils literal notranslate"><span class="pre">Cursor</span></code></a> object bound to this
+connection.</p>
+<p>This function is part of the <a class="reference external" href="http://www.python.org/dev/peps/pep-0249/">DBAPI 2.0 specification</a>.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pg8000.legacy.Connection.description">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">description</span></span><a class="headerlink" href="#pg8000.legacy.Connection.description" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pg8000.legacy.Connection.prepare">
+<span class="sig-name descname"><span class="pre">prepare</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">operation</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pg8000.legacy.Connection.prepare" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pg8000.legacy.Connection.rollback">
+<span class="sig-name descname"><span class="pre">rollback</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pg8000.legacy.Connection.rollback" title="Link to this definition">¶</a></dt>
+<dd><p>Rolls back the current database transaction.</p>
+<p>This function is part of the <a class="reference external" href="http://www.python.org/dev/peps/pep-0249/">DBAPI 2.0 specification</a>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pg8000.legacy.Connection.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sql</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stream</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pg8000.legacy.Connection.run" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pg8000.legacy.Connection.tpc_begin">
+<span class="sig-name descname"><span class="pre">tpc_begin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xid</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pg8000.legacy.Connection.tpc_begin" title="Link to this definition">¶</a></dt>
+<dd><p>Begins a TPC transaction with the given transaction ID xid.</p>
+<p>This method should be called outside of a transaction (i.e. nothing may
+have executed since the last .commit() or .rollback()).</p>
+<p>Furthermore, it is an error to call .commit() or .rollback() within the
+TPC transaction. A ProgrammingError is raised, if the application calls
+.commit() or .rollback() during an active TPC transaction.</p>
+<p>This function is part of the <a class="reference external" href="http://www.python.org/dev/peps/pep-0249/">DBAPI 2.0 specification</a>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pg8000.legacy.Connection.tpc_commit">
+<span class="sig-name descname"><span class="pre">tpc_commit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pg8000.legacy.Connection.tpc_commit" title="Link to this definition">¶</a></dt>
+<dd><p>When called with no arguments, .tpc_commit() commits a TPC
+transaction previously prepared with .tpc_prepare().</p>
+<p>If .tpc_commit() is called prior to .tpc_prepare(), a single phase
+commit is performed. A transaction manager may choose to do this if
+only a single resource is participating in the global transaction.</p>
+<p>When called with a transaction ID xid, the database commits the given
+transaction. If an invalid transaction ID is provided, a
+ProgrammingError will be raised. This form should be called outside of
+a transaction, and is intended for use in recovery.</p>
+<p>On return, the TPC transaction is ended.</p>
+<p>This function is part of the <a class="reference external" href="http://www.python.org/dev/peps/pep-0249/">DBAPI 2.0 specification</a>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pg8000.legacy.Connection.tpc_prepare">
+<span class="sig-name descname"><span class="pre">tpc_prepare</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pg8000.legacy.Connection.tpc_prepare" title="Link to this definition">¶</a></dt>
+<dd><p>Performs the first phase of a transaction started with .tpc_begin().
+A ProgrammingError is be raised if this method is called outside of a
+TPC transaction.</p>
+<p>After calling .tpc_prepare(), no statements can be executed until
+.tpc_commit() or .tpc_rollback() have been called.</p>
+<p>This function is part of the <a class="reference external" href="http://www.python.org/dev/peps/pep-0249/">DBAPI 2.0 specification</a>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pg8000.legacy.Connection.tpc_recover">
+<span class="sig-name descname"><span class="pre">tpc_recover</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pg8000.legacy.Connection.tpc_recover" title="Link to this definition">¶</a></dt>
+<dd><p>Returns a list of pending transaction IDs suitable for use with
+.tpc_commit(xid) or .tpc_rollback(xid).</p>
+<p>This function is part of the <a class="reference external" href="http://www.python.org/dev/peps/pep-0249/">DBAPI 2.0 specification</a>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pg8000.legacy.Connection.tpc_rollback">
+<span class="sig-name descname"><span class="pre">tpc_rollback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pg8000.legacy.Connection.tpc_rollback" title="Link to this definition">¶</a></dt>
+<dd><p>When called with no arguments, .tpc_rollback() rolls back a TPC
+transaction. It may be called before or after .tpc_prepare().</p>
+<p>When called with a transaction ID xid, it rolls back the given
+transaction. If an invalid transaction ID is provided, a
+ProgrammingError is raised. This form should be called outside of a
+transaction, and is intended for use in recovery.</p>
+<p>On return, the TPC transaction is ended.</p>
+<p>This function is part of the <a class="reference external" href="http://www.python.org/dev/peps/pep-0249/">DBAPI 2.0 specification</a>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pg8000.legacy.Connection.xid">
+<span class="sig-name descname"><span class="pre">xid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">format_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">global_transaction_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">branch_qualifier</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pg8000.legacy.Connection.xid" title="Link to this definition">¶</a></dt>
+<dd><p>Create a Transaction IDs (only global_transaction_id is used in pg)
+format_id and branch_qualifier are not used in postgres
+global_transaction_id may be any string identifier supported by
+postgres returns a tuple
+(format_id, global_transaction_id, branch_qualifier)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pg8000.legacy.Cursor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pg8000.legacy.</span></span><span class="sig-name descname"><span class="pre">Cursor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">connection</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">paramstyle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pg8000.legacy.Cursor" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pg8000.legacy.Cursor.close">
+<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pg8000.legacy.Cursor.close" title="Link to this definition">¶</a></dt>
+<dd><p>Closes the cursor.</p>
+<p>This method is part of the <a class="reference external" href="http://www.python.org/dev/peps/pep-0249/">DBAPI 2.0 specification</a>.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pg8000.legacy.Cursor.connection">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">connection</span></span><a class="headerlink" href="#pg8000.legacy.Cursor.connection" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pg8000.legacy.Cursor.description">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">description</span></span><a class="headerlink" href="#pg8000.legacy.Cursor.description" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pg8000.legacy.Cursor.execute">
+<span class="sig-name descname"><span class="pre">execute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">operation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stream</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pg8000.legacy.Cursor.execute" title="Link to this definition">¶</a></dt>
+<dd><p>Executes a database operation.  Parameters may be provided as a
+sequence, or as a mapping, depending upon the value of
+<code class="xref py py-data docutils literal notranslate"><span class="pre">pg8000.paramstyle</span></code>.</p>
+<p>This method is part of the <a class="reference external" href="http://www.python.org/dev/peps/pep-0249/">DBAPI 2.0 specification</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>operation</strong> – The SQL statement to execute.</p></li>
+<li><p><strong>args</strong> – If <code class="xref py py-data docutils literal notranslate"><span class="pre">paramstyle</span></code> is <code class="docutils literal notranslate"><span class="pre">qmark</span></code>, <code class="docutils literal notranslate"><span class="pre">numeric</span></code>, or <code class="docutils literal notranslate"><span class="pre">format</span></code>,
+this argument should be an array of parameters to bind into the
+statement.  If <code class="xref py py-data docutils literal notranslate"><span class="pre">paramstyle</span></code> is <code class="docutils literal notranslate"><span class="pre">named</span></code>, the argument should
+be a dict mapping of parameters.  If the <code class="xref py py-data docutils literal notranslate"><span class="pre">paramstyle</span></code> is
+<code class="docutils literal notranslate"><span class="pre">pyformat</span></code>, the argument value may be either an array or a
+mapping.</p></li>
+<li><p><strong>stream</strong> – <p>This is a pg8000 extension for use with the PostgreSQL
+<a class="reference external" href="http://www.postgresql.org/docs/current/static/sql-copy.html">COPY</a>
+command. For a COPY FROM the parameter must be a readable file-like
+object, and for COPY TO it must be writable.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 1.9.11.</span></p>
+</div>
+</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pg8000.legacy.Cursor.executemany">
+<span class="sig-name descname"><span class="pre">executemany</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">operation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param_sets</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pg8000.legacy.Cursor.executemany" title="Link to this definition">¶</a></dt>
+<dd><p>Prepare a database operation, and then execute it against all
+parameter sequences or mappings provided.</p>
+<p>This method is part of the <a class="reference external" href="http://www.python.org/dev/peps/pep-0249/">DBAPI 2.0 specification</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>operation</strong> – The SQL statement to execute</p></li>
+<li><p><strong>parameter_sets</strong> – A sequence of parameters to execute the statement with. The values
+in the sequence should be sequences or mappings of parameters, the
+same as the args argument of the <a class="reference internal" href="#pg8000.legacy.Cursor.execute" title="pg8000.legacy.Cursor.execute"><code class="xref py py-meth docutils literal notranslate"><span class="pre">execute()</span></code></a> method.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pg8000.legacy.Cursor.fetchall">
+<span class="sig-name descname"><span class="pre">fetchall</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pg8000.legacy.Cursor.fetchall" title="Link to this definition">¶</a></dt>
+<dd><p>Fetches all remaining rows of a query result.</p>
+<p>This method is part of the <a class="reference external" href="http://www.python.org/dev/peps/pep-0249/">DBAPI 2.0 specification</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A sequence, each entry of which is a sequence of field values
+making up a row.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pg8000.legacy.Cursor.fetchmany">
+<span class="sig-name descname"><span class="pre">fetchmany</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pg8000.legacy.Cursor.fetchmany" title="Link to this definition">¶</a></dt>
+<dd><p>Fetches the next set of rows of a query result.</p>
+<p>This method is part of the <a class="reference external" href="http://www.python.org/dev/peps/pep-0249/">DBAPI 2.0 specification</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>size</strong> – The number of rows to fetch when called.  If not provided, the
+<code class="xref py py-attr docutils literal notranslate"><span class="pre">arraysize</span></code> attribute value is used instead.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A sequence, each entry of which is a sequence of field values
+making up a row.  If no more rows are available, an empty sequence
+will be returned.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pg8000.legacy.Cursor.fetchone">
+<span class="sig-name descname"><span class="pre">fetchone</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pg8000.legacy.Cursor.fetchone" title="Link to this definition">¶</a></dt>
+<dd><p>Fetch the next row of a query result set.</p>
+<p>This method is part of the <a class="reference external" href="http://www.python.org/dev/peps/pep-0249/">DBAPI 2.0 specification</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A row as a sequence of field values, or <code class="docutils literal notranslate"><span class="pre">None</span></code> if no more rows
+are available.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pg8000.legacy.Cursor.rowcount">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">rowcount</span></span><a class="headerlink" href="#pg8000.legacy.Cursor.rowcount" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pg8000.legacy.Cursor.setinputsizes">
+<span class="sig-name descname"><span class="pre">setinputsizes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">sizes</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pg8000.legacy.Cursor.setinputsizes" title="Link to this definition">¶</a></dt>
+<dd><p>This method is part of the <a href="#id15"><span class="problematic" id="id16">`</span></a>DBAPI 2.0 specification</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pg8000.legacy.Cursor.setoutputsize">
+<span class="sig-name descname"><span class="pre">setoutputsize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pg8000.legacy.Cursor.setoutputsize" title="Link to this definition">¶</a></dt>
+<dd><p>This method is part of the <a class="reference external" href="http://www.python.org/dev/peps/pep-0249/">DBAPI 2.0 specification</a>, however, it is not
+implemented by pg8000.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="pg8000.legacy.DataError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pg8000.legacy.</span></span><span class="sig-name descname"><span class="pre">DataError</span></span><a class="headerlink" href="#pg8000.legacy.DataError" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="exceptions.html#pg8000.exceptions.DatabaseError" title="pg8000.exceptions.DatabaseError"><code class="xref py py-class docutils literal notranslate"><span class="pre">DatabaseError</span></code></a></p>
+<p>Generic exception raised for errors that are due to problems with the
+processed data.  This exception is not currently raised by pg8000.</p>
+<p>This exception is part of the <a class="reference external" href="http://www.python.org/dev/peps/pep-0249/">DBAPI 2.0 specification</a>.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="pg8000.legacy.DatabaseError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pg8000.legacy.</span></span><span class="sig-name descname"><span class="pre">DatabaseError</span></span><a class="headerlink" href="#pg8000.legacy.DatabaseError" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="exceptions.html#pg8000.exceptions.Error" title="pg8000.exceptions.Error"><code class="xref py py-class docutils literal notranslate"><span class="pre">Error</span></code></a></p>
+<p>Generic exception raised for errors that are related to the database.</p>
+<p>This exception is part of the <a class="reference external" href="http://www.python.org/dev/peps/pep-0249/">DBAPI 2.0 specification</a>.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pg8000.legacy.Date">
+<span class="sig-prename descclassname"><span class="pre">pg8000.legacy.</span></span><span class="sig-name descname"><span class="pre">Date</span></span><a class="headerlink" href="#pg8000.legacy.Date" title="Link to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">date</span></code></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pg8000.legacy.DateFromTicks">
+<span class="sig-prename descclassname"><span class="pre">pg8000.legacy.</span></span><span class="sig-name descname"><span class="pre">DateFromTicks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ticks</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pg8000.legacy.DateFromTicks" title="Link to this definition">¶</a></dt>
+<dd><p>Construct an object holding a date value from the given ticks value
+(number of seconds since the epoch).</p>
+<p>This function is part of the <a class="reference external" href="http://www.python.org/dev/peps/pep-0249/">DBAPI 2.0 specification</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.date</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="pg8000.legacy.Error">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pg8000.legacy.</span></span><span class="sig-name descname"><span class="pre">Error</span></span><a class="headerlink" href="#pg8000.legacy.Error" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>Generic exception that is the base exception of all other error
+exceptions.</p>
+<p>This exception is part of the <a class="reference external" href="http://www.python.org/dev/peps/pep-0249/">DBAPI 2.0 specification</a>.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="pg8000.legacy.IntegrityError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pg8000.legacy.</span></span><span class="sig-name descname"><span class="pre">IntegrityError</span></span><a class="headerlink" href="#pg8000.legacy.IntegrityError" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="exceptions.html#pg8000.exceptions.DatabaseError" title="pg8000.exceptions.DatabaseError"><code class="xref py py-class docutils literal notranslate"><span class="pre">DatabaseError</span></code></a></p>
+<p>Generic exception raised when the relational integrity of the database is
+affected.  This exception is not currently raised by pg8000.</p>
+<p>This exception is part of the <a class="reference external" href="http://www.python.org/dev/peps/pep-0249/">DBAPI 2.0 specification</a>.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="pg8000.legacy.InterfaceError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pg8000.legacy.</span></span><span class="sig-name descname"><span class="pre">InterfaceError</span></span><a class="headerlink" href="#pg8000.legacy.InterfaceError" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="exceptions.html#pg8000.exceptions.Error" title="pg8000.exceptions.Error"><code class="xref py py-class docutils literal notranslate"><span class="pre">Error</span></code></a></p>
+<p>Generic exception raised for errors that are related to the database
+interface rather than the database itself.  For example, if the interface
+attempts to use an SSL connection but the server refuses, an InterfaceError
+will be raised.</p>
+<p>This exception is part of the <a class="reference external" href="http://www.python.org/dev/peps/pep-0249/">DBAPI 2.0 specification</a>.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="pg8000.legacy.InternalError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pg8000.legacy.</span></span><span class="sig-name descname"><span class="pre">InternalError</span></span><a class="headerlink" href="#pg8000.legacy.InternalError" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="exceptions.html#pg8000.exceptions.DatabaseError" title="pg8000.exceptions.DatabaseError"><code class="xref py py-class docutils literal notranslate"><span class="pre">DatabaseError</span></code></a></p>
+<p>Generic exception raised when the database encounters an internal error.
+This is currently only raised when unexpected state occurs in the pg8000
+interface itself, and is typically the result of a interface bug.</p>
+<p>This exception is part of the <a class="reference external" href="http://www.python.org/dev/peps/pep-0249/">DBAPI 2.0 specification</a>.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="pg8000.legacy.NotSupportedError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pg8000.legacy.</span></span><span class="sig-name descname"><span class="pre">NotSupportedError</span></span><a class="headerlink" href="#pg8000.legacy.NotSupportedError" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="exceptions.html#pg8000.exceptions.DatabaseError" title="pg8000.exceptions.DatabaseError"><code class="xref py py-class docutils literal notranslate"><span class="pre">DatabaseError</span></code></a></p>
+<p>Generic exception raised in case a method or database API was used which
+is not supported by the database.</p>
+<p>This exception is part of the <a class="reference external" href="http://www.python.org/dev/peps/pep-0249/">DBAPI 2.0 specification</a>.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="pg8000.legacy.OperationalError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pg8000.legacy.</span></span><span class="sig-name descname"><span class="pre">OperationalError</span></span><a class="headerlink" href="#pg8000.legacy.OperationalError" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="exceptions.html#pg8000.exceptions.DatabaseError" title="pg8000.exceptions.DatabaseError"><code class="xref py py-class docutils literal notranslate"><span class="pre">DatabaseError</span></code></a></p>
+<p>Generic exception raised for errors that are related to the database’s
+operation and not necessarily under the control of the programmer. This
+exception is currently never raised by pg8000.</p>
+<p>This exception is part of the <a class="reference external" href="http://www.python.org/dev/peps/pep-0249/">DBAPI 2.0 specification</a>.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pg8000.legacy.PGInterval">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pg8000.legacy.</span></span><span class="sig-name descname"><span class="pre">PGInterval</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">millennia</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">centuries</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">decades</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">years</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">months</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weeks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">days</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hours</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">minutes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seconds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">microseconds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pg8000.legacy.PGInterval" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pg8000.legacy.PGInterval.ISO_LOOKUP">
+<span class="sig-name descname"><span class="pre">ISO_LOOKUP</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{False:</span> <span class="pre">{'H':</span> <span class="pre">'hours',</span> <span class="pre">'M':</span> <span class="pre">'minutes',</span> <span class="pre">'S':</span> <span class="pre">'seconds'},</span> <span class="pre">True:</span> <span class="pre">{'D':</span> <span class="pre">'days',</span> <span class="pre">'M':</span> <span class="pre">'months',</span> <span class="pre">'Y':</span> <span class="pre">'years'}}</span></em><a class="headerlink" href="#pg8000.legacy.PGInterval.ISO_LOOKUP" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pg8000.legacy.PGInterval.UNIT_MAP">
+<span class="sig-name descname"><span class="pre">UNIT_MAP</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'centuries':</span> <span class="pre">'centuries',</span> <span class="pre">'century':</span> <span class="pre">'centuries',</span> <span class="pre">'day':</span> <span class="pre">'days',</span> <span class="pre">'days':</span> <span class="pre">'days',</span> <span class="pre">'decade':</span> <span class="pre">'decades',</span> <span class="pre">'decades':</span> <span class="pre">'decades',</span> <span class="pre">'hour':</span> <span class="pre">'hours',</span> <span class="pre">'hours':</span> <span class="pre">'hours',</span> <span class="pre">'microsecond':</span> <span class="pre">'microseconds',</span> <span class="pre">'microseconds':</span> <span class="pre">'microseconds',</span> <span class="pre">'millennia':</span> <span class="pre">'millennia',</span> <span class="pre">'millennium':</span> <span class="pre">'millennia',</span> <span class="pre">'mins':</span> <span class="pre">'minutes',</span> <span class="pre">'minute':</span> <span class="pre">'minutes',</span> <span class="pre">'minutes':</span> <span class="pre">'minutes',</span> <span class="pre">'mon':</span> <span class="pre">'months',</span> <span class="pre">'mons':</span> <span class="pre">'months',</span> <span class="pre">'month':</span> <span class="pre">'months',</span> <span class="pre">'months':</span> <span class="pre">'months',</span> <span class="pre">'second':</span> <span class="pre">'seconds',</span> <span class="pre">'seconds':</span> <span class="pre">'seconds',</span> <span class="pre">'secs':</span> <span class="pre">'seconds',</span> <span class="pre">'week':</span> <span class="pre">'weeks',</span> <span class="pre">'weeks':</span> <span class="pre">'weeks',</span> <span class="pre">'year':</span> <span class="pre">'years',</span> <span class="pre">'years':</span> <span class="pre">'years'}</span></em><a class="headerlink" href="#pg8000.legacy.PGInterval.UNIT_MAP" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pg8000.legacy.PGInterval.from_str">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_str</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interval_str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pg8000.legacy.PGInterval.from_str" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pg8000.legacy.PGInterval.from_str_iso_8601">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_str_iso_8601</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interval_str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pg8000.legacy.PGInterval.from_str_iso_8601" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pg8000.legacy.PGInterval.from_str_postgres">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_str_postgres</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interval_str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pg8000.legacy.PGInterval.from_str_postgres" title="Link to this definition">¶</a></dt>
+<dd><p>Parses both the postgres and postgres_verbose formats</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pg8000.legacy.PGInterval.from_str_sql_standard">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_str_sql_standard</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interval_str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pg8000.legacy.PGInterval.from_str_sql_standard" title="Link to this definition">¶</a></dt>
+<dd><p>YYYY-MM
+or
+DD HH:MM:SS.F
+or
+YYYY-MM DD HH:MM:SS.F</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pg8000.legacy.PGInterval.normalize">
+<span class="sig-name descname"><span class="pre">normalize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pg8000.legacy.PGInterval.normalize" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pg8000.legacy.PGInterval.to_timedelta">
+<span class="sig-name descname"><span class="pre">to_timedelta</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pg8000.legacy.PGInterval.to_timedelta" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="pg8000.legacy.ProgrammingError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pg8000.legacy.</span></span><span class="sig-name descname"><span class="pre">ProgrammingError</span></span><a class="headerlink" href="#pg8000.legacy.ProgrammingError" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="exceptions.html#pg8000.exceptions.DatabaseError" title="pg8000.exceptions.DatabaseError"><code class="xref py py-class docutils literal notranslate"><span class="pre">DatabaseError</span></code></a></p>
+<p>Generic exception raised for programming errors.  For example, this
+exception is raised if more parameter fields are in a query string than
+there are available parameters.</p>
+<p>This exception is part of the <a class="reference external" href="http://www.python.org/dev/peps/pep-0249/">DBAPI 2.0 specification</a>.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pg8000.legacy.Range">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pg8000.legacy.</span></span><span class="sig-name descname"><span class="pre">Range</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lower</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upper</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bounds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'[)'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_empty</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pg8000.legacy.Range" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pg8000.legacy.Time">
+<span class="sig-prename descclassname"><span class="pre">pg8000.legacy.</span></span><span class="sig-name descname"><span class="pre">Time</span></span><a class="headerlink" href="#pg8000.legacy.Time" title="Link to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">time</span></code></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pg8000.legacy.TimeFromTicks">
+<span class="sig-prename descclassname"><span class="pre">pg8000.legacy.</span></span><span class="sig-name descname"><span class="pre">TimeFromTicks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ticks</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pg8000.legacy.TimeFromTicks" title="Link to this definition">¶</a></dt>
+<dd><p>Construct an object holding a time value from the given ticks value
+(number of seconds since the epoch).</p>
+<p>This function is part of the <a class="reference external" href="http://www.python.org/dev/peps/pep-0249/">DBAPI 2.0 specification</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.time</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pg8000.legacy.Timestamp">
+<span class="sig-prename descclassname"><span class="pre">pg8000.legacy.</span></span><span class="sig-name descname"><span class="pre">Timestamp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">year</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">month</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">day</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hour</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">minute</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">second</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pg8000.legacy.Timestamp" title="Link to this definition">¶</a></dt>
+<dd><p>Construct an object holding a timestamp value.</p>
+<p>This function is part of the <a class="reference external" href="http://www.python.org/dev/peps/pep-0249/">DBAPI 2.0 specification</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.datetime</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pg8000.legacy.TimestampFromTicks">
+<span class="sig-prename descclassname"><span class="pre">pg8000.legacy.</span></span><span class="sig-name descname"><span class="pre">TimestampFromTicks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ticks</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pg8000.legacy.TimestampFromTicks" title="Link to this definition">¶</a></dt>
+<dd><p>Construct an object holding a timestamp value from the given ticks value
+(number of seconds since the epoch).</p>
+<p>This function is part of the <a class="reference external" href="http://www.python.org/dev/peps/pep-0249/">DBAPI 2.0 specification</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.datetime</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="pg8000.legacy.Warning">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pg8000.legacy.</span></span><span class="sig-name descname"><span class="pre">Warning</span></span><a class="headerlink" href="#pg8000.legacy.Warning" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>Generic exception raised for important database warnings like data
+truncations.  This exception is not currently used by pg8000.</p>
+<p>This exception is part of the <a class="reference external" href="http://www.python.org/dev/peps/pep-0249/">DBAPI 2.0 specification</a>.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pg8000.legacy.connect">
+<span class="sig-prename descclassname"><span class="pre">pg8000.legacy.</span></span><span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">host</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'localhost'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">database</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">port</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5432</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_address</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unix_sock</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ssl_context</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tcp_keepalive</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">application_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">replication</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pg8000.legacy.connect" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pg8000.legacy.pginterval_in">
+<span class="sig-prename descclassname"><span class="pre">pg8000.legacy.</span></span><span class="sig-name descname"><span class="pre">pginterval_in</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pg8000.legacy.pginterval_in" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pg8000.legacy.pginterval_out">
+<span class="sig-prename descclassname"><span class="pre">pg8000.legacy.</span></span><span class="sig-name descname"><span class="pre">pginterval_out</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pg8000.legacy.pginterval_out" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pg8000.legacy.timedelta_in">
+<span class="sig-prename descclassname"><span class="pre">pg8000.legacy.</span></span><span class="sig-name descname"><span class="pre">timedelta_in</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pg8000.legacy.timedelta_in" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="native.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">pg8000.native module</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="exceptions.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">pg8000.exceptions module</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2025, tlocke
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">pg8000.legacy module</a><ul>
+<li><a class="reference internal" href="#pg8000.legacy.BINARY"><code class="docutils literal notranslate"><span class="pre">BINARY</span></code></a></li>
+<li><a class="reference internal" href="#pg8000.legacy.Binary"><code class="docutils literal notranslate"><span class="pre">Binary()</span></code></a></li>
+<li><a class="reference internal" href="#pg8000.legacy.Connection"><code class="docutils literal notranslate"><span class="pre">Connection</span></code></a><ul>
+<li><a class="reference internal" href="#pg8000.legacy.Connection.DatabaseError"><code class="docutils literal notranslate"><span class="pre">Connection.DatabaseError</span></code></a></li>
+<li><a class="reference internal" href="#pg8000.legacy.Connection.Error"><code class="docutils literal notranslate"><span class="pre">Connection.Error</span></code></a></li>
+<li><a class="reference internal" href="#pg8000.legacy.Connection.IntegrityError"><code class="docutils literal notranslate"><span class="pre">Connection.IntegrityError</span></code></a></li>
+<li><a class="reference internal" href="#pg8000.legacy.Connection.InterfaceError"><code class="docutils literal notranslate"><span class="pre">Connection.InterfaceError</span></code></a></li>
+<li><a class="reference internal" href="#pg8000.legacy.Connection.InternalError"><code class="docutils literal notranslate"><span class="pre">Connection.InternalError</span></code></a></li>
+<li><a class="reference internal" href="#pg8000.legacy.Connection.NotSupportedError"><code class="docutils literal notranslate"><span class="pre">Connection.NotSupportedError</span></code></a></li>
+<li><a class="reference internal" href="#pg8000.legacy.Connection.OperationalError"><code class="docutils literal notranslate"><span class="pre">Connection.OperationalError</span></code></a></li>
+<li><a class="reference internal" href="#pg8000.legacy.Connection.ProgrammingError"><code class="docutils literal notranslate"><span class="pre">Connection.ProgrammingError</span></code></a></li>
+<li><a class="reference internal" href="#pg8000.legacy.Connection.Warning"><code class="docutils literal notranslate"><span class="pre">Connection.Warning</span></code></a></li>
+<li><a class="reference internal" href="#pg8000.legacy.Connection.commit"><code class="docutils literal notranslate"><span class="pre">Connection.commit()</span></code></a></li>
+<li><a class="reference internal" href="#pg8000.legacy.Connection.cursor"><code class="docutils literal notranslate"><span class="pre">Connection.cursor()</span></code></a></li>
+<li><a class="reference internal" href="#pg8000.legacy.Connection.description"><code class="docutils literal notranslate"><span class="pre">Connection.description</span></code></a></li>
+<li><a class="reference internal" href="#pg8000.legacy.Connection.prepare"><code class="docutils literal notranslate"><span class="pre">Connection.prepare()</span></code></a></li>
+<li><a class="reference internal" href="#pg8000.legacy.Connection.rollback"><code class="docutils literal notranslate"><span class="pre">Connection.rollback()</span></code></a></li>
+<li><a class="reference internal" href="#pg8000.legacy.Connection.run"><code class="docutils literal notranslate"><span class="pre">Connection.run()</span></code></a></li>
+<li><a class="reference internal" href="#pg8000.legacy.Connection.tpc_begin"><code class="docutils literal notranslate"><span class="pre">Connection.tpc_begin()</span></code></a></li>
+<li><a class="reference internal" href="#pg8000.legacy.Connection.tpc_commit"><code class="docutils literal notranslate"><span class="pre">Connection.tpc_commit()</span></code></a></li>
+<li><a class="reference internal" href="#pg8000.legacy.Connection.tpc_prepare"><code class="docutils literal notranslate"><span class="pre">Connection.tpc_prepare()</span></code></a></li>
+<li><a class="reference internal" href="#pg8000.legacy.Connection.tpc_recover"><code class="docutils literal notranslate"><span class="pre">Connection.tpc_recover()</span></code></a></li>
+<li><a class="reference internal" href="#pg8000.legacy.Connection.tpc_rollback"><code class="docutils literal notranslate"><span class="pre">Connection.tpc_rollback()</span></code></a></li>
+<li><a class="reference internal" href="#pg8000.legacy.Connection.xid"><code class="docutils literal notranslate"><span class="pre">Connection.xid()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pg8000.legacy.Cursor"><code class="docutils literal notranslate"><span class="pre">Cursor</span></code></a><ul>
+<li><a class="reference internal" href="#pg8000.legacy.Cursor.close"><code class="docutils literal notranslate"><span class="pre">Cursor.close()</span></code></a></li>
+<li><a class="reference internal" href="#pg8000.legacy.Cursor.connection"><code class="docutils literal notranslate"><span class="pre">Cursor.connection</span></code></a></li>
+<li><a class="reference internal" href="#pg8000.legacy.Cursor.description"><code class="docutils literal notranslate"><span class="pre">Cursor.description</span></code></a></li>
+<li><a class="reference internal" href="#pg8000.legacy.Cursor.execute"><code class="docutils literal notranslate"><span class="pre">Cursor.execute()</span></code></a></li>
+<li><a class="reference internal" href="#pg8000.legacy.Cursor.executemany"><code class="docutils literal notranslate"><span class="pre">Cursor.executemany()</span></code></a></li>
+<li><a class="reference internal" href="#pg8000.legacy.Cursor.fetchall"><code class="docutils literal notranslate"><span class="pre">Cursor.fetchall()</span></code></a></li>
+<li><a class="reference internal" href="#pg8000.legacy.Cursor.fetchmany"><code class="docutils literal notranslate"><span class="pre">Cursor.fetchmany()</span></code></a></li>
+<li><a class="reference internal" href="#pg8000.legacy.Cursor.fetchone"><code class="docutils literal notranslate"><span class="pre">Cursor.fetchone()</span></code></a></li>
+<li><a class="reference internal" href="#pg8000.legacy.Cursor.rowcount"><code class="docutils literal notranslate"><span class="pre">Cursor.rowcount</span></code></a></li>
+<li><a class="reference internal" href="#pg8000.legacy.Cursor.setinputsizes"><code class="docutils literal notranslate"><span class="pre">Cursor.setinputsizes()</span></code></a></li>
+<li><a class="reference internal" href="#pg8000.legacy.Cursor.setoutputsize"><code class="docutils literal notranslate"><span class="pre">Cursor.setoutputsize()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pg8000.legacy.DataError"><code class="docutils literal notranslate"><span class="pre">DataError</span></code></a></li>
+<li><a class="reference internal" href="#pg8000.legacy.DatabaseError"><code class="docutils literal notranslate"><span class="pre">DatabaseError</span></code></a></li>
+<li><a class="reference internal" href="#pg8000.legacy.Date"><code class="docutils literal notranslate"><span class="pre">Date</span></code></a></li>
+<li><a class="reference internal" href="#pg8000.legacy.DateFromTicks"><code class="docutils literal notranslate"><span class="pre">DateFromTicks()</span></code></a></li>
+<li><a class="reference internal" href="#pg8000.legacy.Error"><code class="docutils literal notranslate"><span class="pre">Error</span></code></a></li>
+<li><a class="reference internal" href="#pg8000.legacy.IntegrityError"><code class="docutils literal notranslate"><span class="pre">IntegrityError</span></code></a></li>
+<li><a class="reference internal" href="#pg8000.legacy.InterfaceError"><code class="docutils literal notranslate"><span class="pre">InterfaceError</span></code></a></li>
+<li><a class="reference internal" href="#pg8000.legacy.InternalError"><code class="docutils literal notranslate"><span class="pre">InternalError</span></code></a></li>
+<li><a class="reference internal" href="#pg8000.legacy.NotSupportedError"><code class="docutils literal notranslate"><span class="pre">NotSupportedError</span></code></a></li>
+<li><a class="reference internal" href="#pg8000.legacy.OperationalError"><code class="docutils literal notranslate"><span class="pre">OperationalError</span></code></a></li>
+<li><a class="reference internal" href="#pg8000.legacy.PGInterval"><code class="docutils literal notranslate"><span class="pre">PGInterval</span></code></a><ul>
+<li><a class="reference internal" href="#pg8000.legacy.PGInterval.ISO_LOOKUP"><code class="docutils literal notranslate"><span class="pre">PGInterval.ISO_LOOKUP</span></code></a></li>
+<li><a class="reference internal" href="#pg8000.legacy.PGInterval.UNIT_MAP"><code class="docutils literal notranslate"><span class="pre">PGInterval.UNIT_MAP</span></code></a></li>
+<li><a class="reference internal" href="#pg8000.legacy.PGInterval.from_str"><code class="docutils literal notranslate"><span class="pre">PGInterval.from_str()</span></code></a></li>
+<li><a class="reference internal" href="#pg8000.legacy.PGInterval.from_str_iso_8601"><code class="docutils literal notranslate"><span class="pre">PGInterval.from_str_iso_8601()</span></code></a></li>
+<li><a class="reference internal" href="#pg8000.legacy.PGInterval.from_str_postgres"><code class="docutils literal notranslate"><span class="pre">PGInterval.from_str_postgres()</span></code></a></li>
+<li><a class="reference internal" href="#pg8000.legacy.PGInterval.from_str_sql_standard"><code class="docutils literal notranslate"><span class="pre">PGInterval.from_str_sql_standard()</span></code></a></li>
+<li><a class="reference internal" href="#pg8000.legacy.PGInterval.normalize"><code class="docutils literal notranslate"><span class="pre">PGInterval.normalize()</span></code></a></li>
+<li><a class="reference internal" href="#pg8000.legacy.PGInterval.to_timedelta"><code class="docutils literal notranslate"><span class="pre">PGInterval.to_timedelta()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pg8000.legacy.ProgrammingError"><code class="docutils literal notranslate"><span class="pre">ProgrammingError</span></code></a></li>
+<li><a class="reference internal" href="#pg8000.legacy.Range"><code class="docutils literal notranslate"><span class="pre">Range</span></code></a></li>
+<li><a class="reference internal" href="#pg8000.legacy.Time"><code class="docutils literal notranslate"><span class="pre">Time</span></code></a></li>
+<li><a class="reference internal" href="#pg8000.legacy.TimeFromTicks"><code class="docutils literal notranslate"><span class="pre">TimeFromTicks()</span></code></a></li>
+<li><a class="reference internal" href="#pg8000.legacy.Timestamp"><code class="docutils literal notranslate"><span class="pre">Timestamp()</span></code></a></li>
+<li><a class="reference internal" href="#pg8000.legacy.TimestampFromTicks"><code class="docutils literal notranslate"><span class="pre">TimestampFromTicks()</span></code></a></li>
+<li><a class="reference internal" href="#pg8000.legacy.Warning"><code class="docutils literal notranslate"><span class="pre">Warning</span></code></a></li>
+<li><a class="reference internal" href="#pg8000.legacy.connect"><code class="docutils literal notranslate"><span class="pre">connect()</span></code></a></li>
+<li><a class="reference internal" href="#pg8000.legacy.pginterval_in"><code class="docutils literal notranslate"><span class="pre">pginterval_in()</span></code></a></li>
+<li><a class="reference internal" href="#pg8000.legacy.pginterval_out"><code class="docutils literal notranslate"><span class="pre">pginterval_out()</span></code></a></li>
+<li><a class="reference internal" href="#pg8000.legacy.timedelta_in"><code class="docutils literal notranslate"><span class="pre">timedelta_in()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="_static/documentation_options.js?v=14e31772"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/furo.js?v=5fa4622c"></script>
+    </body>
+</html>

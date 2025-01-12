@@ -2,10 +2,12 @@
 <html class="no-js" lang="en" data-content_root="./">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" />
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="pg8000.legacy module" href="legacy.html" /><link rel="prev" title="pg8000.dbapi module" href="dbapi.html" />
 
-    <!-- Generated with Sphinx 8.1.3 and Furo 2024.08.06 --><title>Python Module Index - pg8000 V1.31.2 documentation</title>
-<link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
+    <!-- Generated with Sphinx 8.1.3 and Furo 2024.08.06 -->
+        <title>pg8000.exceptions module - pg8000 V1.31.2 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=302659d7" />
     
@@ -176,7 +178,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -197,11 +199,11 @@
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="converters.html">pg8000.converters module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="core.html">pg8000.core module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dbapi.html">pg8000.dbapi module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="exceptions.html">pg8000.exceptions module</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">pg8000.exceptions module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="legacy.html">pg8000.legacy module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="native.html">pg8000.native module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="types.html">pg8000.types module</a></li>
@@ -224,7 +226,13 @@
           <span>Back to top</span>
         </a>
         <div class="content-icon-container">
-          <div class="theme-toggle-container theme-toggle-content">
+          <div class="view-this-page">
+  <a class="muted-link" href="_sources/exceptions.rst.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
@@ -233,82 +241,69 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          
-<section class="domainindex-section">
-  <h1>Python Module Index</h1>
-  <div class="domainindex-jumpbox"><a href="#cap-p"><strong>p</strong></a></div>
+          <section id="module-pg8000.exceptions">
+<span id="pg8000-exceptions-module"></span><h1>pg8000.exceptions module<a class="headerlink" href="#module-pg8000.exceptions" title="Link to this heading">¶</a></h1>
+<dl class="py exception">
+<dt class="sig sig-object py" id="pg8000.exceptions.DatabaseError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pg8000.exceptions.</span></span><span class="sig-name descname"><span class="pre">DatabaseError</span></span><a class="headerlink" href="#pg8000.exceptions.DatabaseError" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pg8000.exceptions.Error" title="pg8000.exceptions.Error"><code class="xref py py-class docutils literal notranslate"><span class="pre">Error</span></code></a></p>
+<p>Generic exception raised for errors that are related to the database.</p>
+<p>This exception is part of the <a class="reference external" href="http://www.python.org/dev/peps/pep-0249/">DBAPI 2.0 specification</a>.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="pg8000.exceptions.Error">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pg8000.exceptions.</span></span><span class="sig-name descname"><span class="pre">Error</span></span><a class="headerlink" href="#pg8000.exceptions.Error" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>Generic exception that is the base exception of all other error
+exceptions.</p>
+<p>This exception is part of the <a class="reference external" href="http://www.python.org/dev/peps/pep-0249/">DBAPI 2.0 specification</a>.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="pg8000.exceptions.InterfaceError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pg8000.exceptions.</span></span><span class="sig-name descname"><span class="pre">InterfaceError</span></span><a class="headerlink" href="#pg8000.exceptions.InterfaceError" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pg8000.exceptions.Error" title="pg8000.exceptions.Error"><code class="xref py py-class docutils literal notranslate"><span class="pre">Error</span></code></a></p>
+<p>Generic exception raised for errors that are related to the database
+interface rather than the database itself.  For example, if the interface
+attempts to use an SSL connection but the server refuses, an InterfaceError
+will be raised.</p>
+<p>This exception is part of the <a class="reference external" href="http://www.python.org/dev/peps/pep-0249/">DBAPI 2.0 specification</a>.</p>
+</dd></dl>
+
 </section>
-<table class="domainindex-table">
-  <tr class="pcap">
-    <td></td><td>&#160;</td><td></td>
-  </tr>
-  <tr class="cap" id="cap-p">
-    <td></td><td><strong>p</strong></td><td></td>
-  </tr>
-  <tr>
-    <td><img src="_static/minus.png" class="toggler"
-              id="toggle-1" style="display: none" alt="-" /></td>
-    <td>
-        <code class="xref">pg8000</code></td><td>
-    <em></em></td>
-  </tr>
-  <tr class="cg-1">
-    <td></td>
-    <td>&#160;&#160;&#160;
-        <a href="converters.html#module-pg8000.converters"><code class="xref">pg8000.converters</code></a></td><td>
-    <em></em></td>
-  </tr>
-  <tr class="cg-1">
-    <td></td>
-    <td>&#160;&#160;&#160;
-        <a href="core.html#module-pg8000.core"><code class="xref">pg8000.core</code></a></td><td>
-    <em></em></td>
-  </tr>
-  <tr class="cg-1">
-    <td></td>
-    <td>&#160;&#160;&#160;
-        <a href="dbapi.html#module-pg8000.dbapi"><code class="xref">pg8000.dbapi</code></a></td><td>
-    <em></em></td>
-  </tr>
-  <tr class="cg-1">
-    <td></td>
-    <td>&#160;&#160;&#160;
-        <a href="exceptions.html#module-pg8000.exceptions"><code class="xref">pg8000.exceptions</code></a></td><td>
-    <em></em></td>
-  </tr>
-  <tr class="cg-1">
-    <td></td>
-    <td>&#160;&#160;&#160;
-        <a href="legacy.html#module-pg8000.legacy"><code class="xref">pg8000.legacy</code></a></td><td>
-    <em></em></td>
-  </tr>
-  <tr class="cg-1">
-    <td></td>
-    <td>&#160;&#160;&#160;
-        <a href="native.html#module-pg8000.native"><code class="xref">pg8000.native</code></a></td><td>
-    <em></em></td>
-  </tr>
-  <tr class="cg-1">
-    <td></td>
-    <td>&#160;&#160;&#160;
-        <a href="types.html#module-pg8000.types"><code class="xref">pg8000.types</code></a></td><td>
-    <em></em></td>
-  </tr>
-</table>
 
         </article>
       </div>
       <footer>
         
         <div class="related-pages">
-          
-          
+          <a class="next-page" href="legacy.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">pg8000.legacy module</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="dbapi.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">pg8000.dbapi module</div>
+                
+              </div>
+            </a>
         </div>
         <div class="bottom-of-page">
           <div class="left-details">
@@ -327,8 +322,29 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">pg8000.exceptions module</a><ul>
+<li><a class="reference internal" href="#pg8000.exceptions.DatabaseError"><code class="docutils literal notranslate"><span class="pre">DatabaseError</span></code></a></li>
+<li><a class="reference internal" href="#pg8000.exceptions.Error"><code class="docutils literal notranslate"><span class="pre">Error</span></code></a></li>
+<li><a class="reference internal" href="#pg8000.exceptions.InterfaceError"><code class="docutils literal notranslate"><span class="pre">InterfaceError</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>

@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="src" href="modules.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="&lt;no title&gt;" href="modules.html" />
 
     <!-- Generated with Sphinx 8.1.3 and Furo 2024.08.06 -->
         <title>pg8000 V1.31.2 documentation</title>
@@ -200,10 +200,13 @@
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1 has-children"><a class="reference internal" href="modules.html">src</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of src</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="pg8000.html">pg8000 package</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="converters.html">pg8000.converters module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="core.html">pg8000.core module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dbapi.html">pg8000.dbapi module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exceptions.html">pg8000.exceptions module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="legacy.html">pg8000.legacy module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="native.html">pg8000.native module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="types.html">pg8000.types module</a></li>
 </ul>
 
 </div>
@@ -246,11 +249,193 @@
         <article role="main" id="furo-main-content">
           <section id="pg8000-documentation">
 <h1>pg8000 documentation<a class="headerlink" href="#pg8000-documentation" title="Link to this heading">¶</a></h1>
+<p>BLA BLA</p>
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="modules.html">src</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pg8000.html">pg8000 package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="converters.html">pg8000.converters module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.ParserState"><code class="docutils literal notranslate"><span class="pre">ParserState</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.array_out"><code class="docutils literal notranslate"><span class="pre">array_out()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.array_string_escape"><code class="docutils literal notranslate"><span class="pre">array_string_escape()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.bool_array_in"><code class="docutils literal notranslate"><span class="pre">bool_array_in()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.bool_in"><code class="docutils literal notranslate"><span class="pre">bool_in()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.bool_out"><code class="docutils literal notranslate"><span class="pre">bool_out()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.bytes_array_in"><code class="docutils literal notranslate"><span class="pre">bytes_array_in()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.bytes_in"><code class="docutils literal notranslate"><span class="pre">bytes_in()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.bytes_out"><code class="docutils literal notranslate"><span class="pre">bytes_out()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.cidr_array_in"><code class="docutils literal notranslate"><span class="pre">cidr_array_in()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.cidr_in"><code class="docutils literal notranslate"><span class="pre">cidr_in()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.cidr_out"><code class="docutils literal notranslate"><span class="pre">cidr_out()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.composite_out"><code class="docutils literal notranslate"><span class="pre">composite_out()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.date_array_in"><code class="docutils literal notranslate"><span class="pre">date_array_in()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.date_in"><code class="docutils literal notranslate"><span class="pre">date_in()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.date_out"><code class="docutils literal notranslate"><span class="pre">date_out()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.datemultirange_array_in"><code class="docutils literal notranslate"><span class="pre">datemultirange_array_in()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.datemultirange_in"><code class="docutils literal notranslate"><span class="pre">datemultirange_in()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.daterange_array_in"><code class="docutils literal notranslate"><span class="pre">daterange_array_in()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.daterange_in"><code class="docutils literal notranslate"><span class="pre">daterange_in()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.datetime_out"><code class="docutils literal notranslate"><span class="pre">datetime_out()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.enum_out"><code class="docutils literal notranslate"><span class="pre">enum_out()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.float_array_in"><code class="docutils literal notranslate"><span class="pre">float_array_in()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.float_out"><code class="docutils literal notranslate"><span class="pre">float_out()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.identifier"><code class="docutils literal notranslate"><span class="pre">identifier()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.inet_array_in"><code class="docutils literal notranslate"><span class="pre">inet_array_in()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.inet_in"><code class="docutils literal notranslate"><span class="pre">inet_in()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.inet_out"><code class="docutils literal notranslate"><span class="pre">inet_out()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.int4multirange_array_in"><code class="docutils literal notranslate"><span class="pre">int4multirange_array_in()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.int4multirange_in"><code class="docutils literal notranslate"><span class="pre">int4multirange_in()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.int4range_array_in"><code class="docutils literal notranslate"><span class="pre">int4range_array_in()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.int4range_in"><code class="docutils literal notranslate"><span class="pre">int4range_in()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.int8multirange_array_in"><code class="docutils literal notranslate"><span class="pre">int8multirange_array_in()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.int8multirange_in"><code class="docutils literal notranslate"><span class="pre">int8multirange_in()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.int8range_array_in"><code class="docutils literal notranslate"><span class="pre">int8range_array_in()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.int8range_in"><code class="docutils literal notranslate"><span class="pre">int8range_in()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.int_array_in"><code class="docutils literal notranslate"><span class="pre">int_array_in()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.int_in"><code class="docutils literal notranslate"><span class="pre">int_in()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.int_out"><code class="docutils literal notranslate"><span class="pre">int_out()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.interval_array_in"><code class="docutils literal notranslate"><span class="pre">interval_array_in()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.interval_in"><code class="docutils literal notranslate"><span class="pre">interval_in()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.interval_out"><code class="docutils literal notranslate"><span class="pre">interval_out()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.json_array_in"><code class="docutils literal notranslate"><span class="pre">json_array_in()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.json_in"><code class="docutils literal notranslate"><span class="pre">json_in()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.json_out"><code class="docutils literal notranslate"><span class="pre">json_out()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.literal"><code class="docutils literal notranslate"><span class="pre">literal()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.make_param"><code class="docutils literal notranslate"><span class="pre">make_param()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.make_params"><code class="docutils literal notranslate"><span class="pre">make_params()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.null_out"><code class="docutils literal notranslate"><span class="pre">null_out()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.numeric_array_in"><code class="docutils literal notranslate"><span class="pre">numeric_array_in()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.numeric_in"><code class="docutils literal notranslate"><span class="pre">numeric_in()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.numeric_out"><code class="docutils literal notranslate"><span class="pre">numeric_out()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.nummultirange_array_in"><code class="docutils literal notranslate"><span class="pre">nummultirange_array_in()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.nummultirange_in"><code class="docutils literal notranslate"><span class="pre">nummultirange_in()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.numrange_array_in"><code class="docutils literal notranslate"><span class="pre">numrange_array_in()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.numrange_in"><code class="docutils literal notranslate"><span class="pre">numrange_in()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.pg_interval_in"><code class="docutils literal notranslate"><span class="pre">pg_interval_in()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.pg_interval_out"><code class="docutils literal notranslate"><span class="pre">pg_interval_out()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.point_in"><code class="docutils literal notranslate"><span class="pre">point_in()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.range_out"><code class="docutils literal notranslate"><span class="pre">range_out()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.record_in"><code class="docutils literal notranslate"><span class="pre">record_in()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.string_array_in"><code class="docutils literal notranslate"><span class="pre">string_array_in()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.string_in"><code class="docutils literal notranslate"><span class="pre">string_in()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.string_out"><code class="docutils literal notranslate"><span class="pre">string_out()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.time_array_in"><code class="docutils literal notranslate"><span class="pre">time_array_in()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.time_in"><code class="docutils literal notranslate"><span class="pre">time_in()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.time_out"><code class="docutils literal notranslate"><span class="pre">time_out()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.timestamp_array_in"><code class="docutils literal notranslate"><span class="pre">timestamp_array_in()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.timestamp_in"><code class="docutils literal notranslate"><span class="pre">timestamp_in()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.timestamptz_array_in"><code class="docutils literal notranslate"><span class="pre">timestamptz_array_in()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.timestamptz_in"><code class="docutils literal notranslate"><span class="pre">timestamptz_in()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.ts_in"><code class="docutils literal notranslate"><span class="pre">ts_in()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.tsmultirange_array_in"><code class="docutils literal notranslate"><span class="pre">tsmultirange_array_in()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.tsmultirange_in"><code class="docutils literal notranslate"><span class="pre">tsmultirange_in()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.tsrange_array_in"><code class="docutils literal notranslate"><span class="pre">tsrange_array_in()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.tsrange_in"><code class="docutils literal notranslate"><span class="pre">tsrange_in()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.tstz_in"><code class="docutils literal notranslate"><span class="pre">tstz_in()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.tstzmultirange_array_in"><code class="docutils literal notranslate"><span class="pre">tstzmultirange_array_in()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.tstzmultirange_in"><code class="docutils literal notranslate"><span class="pre">tstzmultirange_in()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.tstzrange_array_in"><code class="docutils literal notranslate"><span class="pre">tstzrange_array_in()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.tstzrange_in"><code class="docutils literal notranslate"><span class="pre">tstzrange_in()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.unknown_out"><code class="docutils literal notranslate"><span class="pre">unknown_out()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.uuid_array_in"><code class="docutils literal notranslate"><span class="pre">uuid_array_in()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.uuid_in"><code class="docutils literal notranslate"><span class="pre">uuid_in()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.uuid_out"><code class="docutils literal notranslate"><span class="pre">uuid_out()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="converters.html#pg8000.converters.vector_in"><code class="docutils literal notranslate"><span class="pre">vector_in()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="core.html">pg8000.core module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="core.html#pg8000.core.Context"><code class="docutils literal notranslate"><span class="pre">Context</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="core.html#pg8000.core.CoreConnection"><code class="docutils literal notranslate"><span class="pre">CoreConnection</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="core.html#pg8000.core.H_pack"><code class="docutils literal notranslate"><span class="pre">H_pack()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="core.html#pg8000.core.H_unpack"><code class="docutils literal notranslate"><span class="pre">H_unpack()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="core.html#pg8000.core.bh_pack"><code class="docutils literal notranslate"><span class="pre">bh_pack()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="core.html#pg8000.core.bh_unpack"><code class="docutils literal notranslate"><span class="pre">bh_unpack()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="core.html#pg8000.core.cccc_pack"><code class="docutils literal notranslate"><span class="pre">cccc_pack()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="core.html#pg8000.core.cccc_unpack"><code class="docutils literal notranslate"><span class="pre">cccc_unpack()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="core.html#pg8000.core.ci_pack"><code class="docutils literal notranslate"><span class="pre">ci_pack()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="core.html#pg8000.core.ci_unpack"><code class="docutils literal notranslate"><span class="pre">ci_unpack()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="core.html#pg8000.core.i_pack"><code class="docutils literal notranslate"><span class="pre">i_pack()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="core.html#pg8000.core.i_unpack"><code class="docutils literal notranslate"><span class="pre">i_unpack()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="core.html#pg8000.core.ihihih_pack"><code class="docutils literal notranslate"><span class="pre">ihihih_pack()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="core.html#pg8000.core.ihihih_unpack"><code class="docutils literal notranslate"><span class="pre">ihihih_unpack()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="core.html#pg8000.core.ii_pack"><code class="docutils literal notranslate"><span class="pre">ii_pack()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="core.html#pg8000.core.ii_unpack"><code class="docutils literal notranslate"><span class="pre">ii_unpack()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="core.html#pg8000.core.pack_funcs"><code class="docutils literal notranslate"><span class="pre">pack_funcs()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dbapi.html">pg8000.dbapi module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dbapi.html#pg8000.dbapi.BINARY"><code class="docutils literal notranslate"><span class="pre">BINARY</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="dbapi.html#pg8000.dbapi.Binary"><code class="docutils literal notranslate"><span class="pre">Binary()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="dbapi.html#pg8000.dbapi.Connection"><code class="docutils literal notranslate"><span class="pre">Connection</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="dbapi.html#pg8000.dbapi.Cursor"><code class="docutils literal notranslate"><span class="pre">Cursor</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="dbapi.html#pg8000.dbapi.DataError"><code class="docutils literal notranslate"><span class="pre">DataError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="dbapi.html#pg8000.dbapi.DatabaseError"><code class="docutils literal notranslate"><span class="pre">DatabaseError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="dbapi.html#pg8000.dbapi.Date"><code class="docutils literal notranslate"><span class="pre">Date</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="dbapi.html#pg8000.dbapi.DateFromTicks"><code class="docutils literal notranslate"><span class="pre">DateFromTicks()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="dbapi.html#pg8000.dbapi.Error"><code class="docutils literal notranslate"><span class="pre">Error</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="dbapi.html#pg8000.dbapi.IntegrityError"><code class="docutils literal notranslate"><span class="pre">IntegrityError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="dbapi.html#pg8000.dbapi.InterfaceError"><code class="docutils literal notranslate"><span class="pre">InterfaceError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="dbapi.html#pg8000.dbapi.InternalError"><code class="docutils literal notranslate"><span class="pre">InternalError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="dbapi.html#pg8000.dbapi.NotSupportedError"><code class="docutils literal notranslate"><span class="pre">NotSupportedError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="dbapi.html#pg8000.dbapi.OperationalError"><code class="docutils literal notranslate"><span class="pre">OperationalError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="dbapi.html#pg8000.dbapi.PGInterval"><code class="docutils literal notranslate"><span class="pre">PGInterval</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="dbapi.html#pg8000.dbapi.ProgrammingError"><code class="docutils literal notranslate"><span class="pre">ProgrammingError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="dbapi.html#pg8000.dbapi.Range"><code class="docutils literal notranslate"><span class="pre">Range</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="dbapi.html#pg8000.dbapi.Time"><code class="docutils literal notranslate"><span class="pre">Time</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="dbapi.html#pg8000.dbapi.TimeFromTicks"><code class="docutils literal notranslate"><span class="pre">TimeFromTicks()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="dbapi.html#pg8000.dbapi.Timestamp"><code class="docutils literal notranslate"><span class="pre">Timestamp()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="dbapi.html#pg8000.dbapi.TimestampFromTicks"><code class="docutils literal notranslate"><span class="pre">TimestampFromTicks()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="dbapi.html#pg8000.dbapi.Warning"><code class="docutils literal notranslate"><span class="pre">Warning</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="dbapi.html#pg8000.dbapi.connect"><code class="docutils literal notranslate"><span class="pre">connect()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="exceptions.html">pg8000.exceptions module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html#pg8000.exceptions.DatabaseError"><code class="docutils literal notranslate"><span class="pre">DatabaseError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html#pg8000.exceptions.Error"><code class="docutils literal notranslate"><span class="pre">Error</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html#pg8000.exceptions.InterfaceError"><code class="docutils literal notranslate"><span class="pre">InterfaceError</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="legacy.html">pg8000.legacy module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="legacy.html#pg8000.legacy.BINARY"><code class="docutils literal notranslate"><span class="pre">BINARY</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="legacy.html#pg8000.legacy.Binary"><code class="docutils literal notranslate"><span class="pre">Binary()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="legacy.html#pg8000.legacy.Connection"><code class="docutils literal notranslate"><span class="pre">Connection</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="legacy.html#pg8000.legacy.Cursor"><code class="docutils literal notranslate"><span class="pre">Cursor</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="legacy.html#pg8000.legacy.DataError"><code class="docutils literal notranslate"><span class="pre">DataError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="legacy.html#pg8000.legacy.DatabaseError"><code class="docutils literal notranslate"><span class="pre">DatabaseError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="legacy.html#pg8000.legacy.Date"><code class="docutils literal notranslate"><span class="pre">Date</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="legacy.html#pg8000.legacy.DateFromTicks"><code class="docutils literal notranslate"><span class="pre">DateFromTicks()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="legacy.html#pg8000.legacy.Error"><code class="docutils literal notranslate"><span class="pre">Error</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="legacy.html#pg8000.legacy.IntegrityError"><code class="docutils literal notranslate"><span class="pre">IntegrityError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="legacy.html#pg8000.legacy.InterfaceError"><code class="docutils literal notranslate"><span class="pre">InterfaceError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="legacy.html#pg8000.legacy.InternalError"><code class="docutils literal notranslate"><span class="pre">InternalError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="legacy.html#pg8000.legacy.NotSupportedError"><code class="docutils literal notranslate"><span class="pre">NotSupportedError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="legacy.html#pg8000.legacy.OperationalError"><code class="docutils literal notranslate"><span class="pre">OperationalError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="legacy.html#pg8000.legacy.PGInterval"><code class="docutils literal notranslate"><span class="pre">PGInterval</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="legacy.html#pg8000.legacy.ProgrammingError"><code class="docutils literal notranslate"><span class="pre">ProgrammingError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="legacy.html#pg8000.legacy.Range"><code class="docutils literal notranslate"><span class="pre">Range</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="legacy.html#pg8000.legacy.Time"><code class="docutils literal notranslate"><span class="pre">Time</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="legacy.html#pg8000.legacy.TimeFromTicks"><code class="docutils literal notranslate"><span class="pre">TimeFromTicks()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="legacy.html#pg8000.legacy.Timestamp"><code class="docutils literal notranslate"><span class="pre">Timestamp()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="legacy.html#pg8000.legacy.TimestampFromTicks"><code class="docutils literal notranslate"><span class="pre">TimestampFromTicks()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="legacy.html#pg8000.legacy.Warning"><code class="docutils literal notranslate"><span class="pre">Warning</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="legacy.html#pg8000.legacy.connect"><code class="docutils literal notranslate"><span class="pre">connect()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="legacy.html#pg8000.legacy.pginterval_in"><code class="docutils literal notranslate"><span class="pre">pginterval_in()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="legacy.html#pg8000.legacy.pginterval_out"><code class="docutils literal notranslate"><span class="pre">pginterval_out()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="legacy.html#pg8000.legacy.timedelta_in"><code class="docutils literal notranslate"><span class="pre">timedelta_in()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="native.html">pg8000.native module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="native.html#pg8000.native.DatabaseError"><code class="docutils literal notranslate"><span class="pre">DatabaseError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="native.html#pg8000.native.Error"><code class="docutils literal notranslate"><span class="pre">Error</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="native.html#pg8000.native.InterfaceError"><code class="docutils literal notranslate"><span class="pre">InterfaceError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="native.html#pg8000.native.PGInterval"><code class="docutils literal notranslate"><span class="pre">PGInterval</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="native.html#pg8000.native.Range"><code class="docutils literal notranslate"><span class="pre">Range</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="native.html#pg8000.native.identifier"><code class="docutils literal notranslate"><span class="pre">identifier()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="native.html#pg8000.native.literal"><code class="docutils literal notranslate"><span class="pre">literal()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="types.html">pg8000.types module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="types.html#pg8000.types.PGInterval"><code class="docutils literal notranslate"><span class="pre">PGInterval</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="types.html#pg8000.types.Range"><code class="docutils literal notranslate"><span class="pre">Range</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -275,7 +460,7 @@
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">src</div>
+                <div class="title">&lt;no title&gt;</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>

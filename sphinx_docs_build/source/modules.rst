@@ -1,7 +1,10 @@
-src
-===
-
 .. toctree::
-   :maxdepth: 10
+   :maxdepth: 4
 
-   pg8000
+   converters
+   core
+   dbapi
+   exceptions
+   legacy
+   native
+   types
