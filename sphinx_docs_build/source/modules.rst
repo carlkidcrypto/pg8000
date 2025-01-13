@@ -8,3 +8,5 @@
    legacy
    native
    types
+   development
+   design

@@ -1,13 +1,13 @@
 pg8000 documentation
 ====================
 
-BLA BLA
+ADD SOME TEXT HERE LATER
 
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
-
+    
    modules
 
 Indices and tables

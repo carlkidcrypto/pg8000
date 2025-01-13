@@ -626,7 +626,7 @@ class Cursor:
         self._c = None
 
     def setinputsizes(self, *sizes):
-        """This method is part of the `DBAPI 2.0 specification"""
+        """This method is part of the `DBAPI 2.0 specification`_"""
         oids = []
         for size in sizes:
             if isinstance(size, int):
